@@ -1,4 +1,4 @@
-Package: surveyanalysis
+Package: surveyanalysisR
 Type: Package
 Title: Market Research Data Analysis
 Version: 0.1.0
@@ -12,5 +12,6 @@ Depends: R (>= 3.1)
 Imports: 
     dplyr,
     haven,
-    purrr
+    purrr,
+    ggplot2
 RoxygenNote: 7.1.1
