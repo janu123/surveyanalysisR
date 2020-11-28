@@ -1,6 +1,6 @@
-#' @title Scores of Group A and Group B
+#' @title Experiment Data
 #'
-#' @description A survey experiment dataset.
+#' @description Data for message testing experiment
 #'
 #' @format A data frame with 10704 rows and 9 variables:
 #' \describe{
