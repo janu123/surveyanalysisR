@@ -1,10 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-surveyanalysisR
+surveyanalysis
 ==============
 
 <!-- badges: start -->
-<!-- badges: end -->
+[![R build status](https://github.com/janu123/surveyanalysisR/workflows/R-CMD-check/badge.svg)](https://github.com/janu123/surveyanalysisR/actions) <!-- badges: end -->
+
 The goal of surveyanalysis is to ...
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:

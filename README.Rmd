@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
 # surveyanalysis
 
 <!-- badges: start -->
+[![R build status](https://github.com/janu123/surveyanalysisR/workflows/R-CMD-check/badge.svg)](https://github.com/janu123/surveyanalysisR/actions)
 <!-- badges: end -->
 
 The goal of surveyanalysis is to ...
