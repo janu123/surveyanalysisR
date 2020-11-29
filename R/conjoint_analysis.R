@@ -1,3 +1,14 @@
+#' Title
+#'
+#' @param y
+#' @param x
+#' @param z
+#' @param y.type
+#'
+#' @return
+#' @export
+#'
+#' @examples
 conjoint_analysis<-function(y,x,z,y.type="score")
 {
   y<-m2v(y)
@@ -27,4 +38,3 @@ conjoint_analysis<-function(y,x,z,y.type="score")
   print(Utls)
   imp<-round(caImportance(y,x),2)
 }
-conjoint_analysis(new_data[,9],new_data[,10:15],lev_df)

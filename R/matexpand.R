@@ -1,3 +1,14 @@
+#' Title
+#'
+#' @param m
+#' @param n
+#' @param S
+#' @param x
+#'
+#' @return
+#' @export
+#'
+#' @examples
 matexpand <- function(m, n, S, x)
 {
   N <- n*S

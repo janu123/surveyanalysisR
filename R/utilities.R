@@ -1,3 +1,12 @@
+#' Title
+#'
+#' @param u
+#' @param Lj
+#'
+#' @return
+#' @export
+#'
+#' @examples
 utilities <- function(u, Lj)
 {
   m <- length(Lj)

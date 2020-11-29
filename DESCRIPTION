@@ -13,7 +13,8 @@ Imports:
     dplyr,
     haven,
     purrr,
-    ggplot2
+    ggplot2,
+    conjoint
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,

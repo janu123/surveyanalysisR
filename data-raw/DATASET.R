@@ -1,5 +1,14 @@
 ## code to prepare `DATASET` dataset goes here
 experiment_data<-read_sav("data-raw/experiment_data.sav")
-usethis::use_data(experiment_data,overwrite = TRUE)
+conjoint_data<-experiment_data %>% select(duration:answer)
+conjoint_data<-caEncodedDesign(conjoint_data)
+lev<-c("12 months","3 months","6 months","give you the energy to unlock your fullest potential","help you lead a better life","help you sleep without more pills",
+       "improve your health for the long-run","improve your sleep sustainably","breaking bad habits and creating new routines",
+       "changing your sleep mindset","empowering you to take back your sleep habits",
+       "$20/month","$30/month","$40/month",
+       "a program created just for you","cognitive behavioral therapy","daily text messages from a coach","personalized, human coaching","the support of a community of people just like you","unique daily games, challenges and exercises",
+       "a method that has helped thousands","leading researchers","professional athletes","scientific evidence")
+lev_df<-data.frame(lev)
+usethis::use_data(conjoint_data,overwrite = TRUE)
 survey_data<-read_sav("data-raw/survey_data.sav")
 usethis::use_data(survey_data,overwrite = TRUE)

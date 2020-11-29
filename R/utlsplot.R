@@ -1,3 +1,15 @@
+#' Title
+#'
+#' @param ul
+#' @param Lj
+#' @param z
+#' @param m
+#' @param xnms
+#'
+#' @return
+#' @export
+#'
+#' @examples
 utlsplot<-function(ul,Lj,z,m,xnms)
 {
   zz<-as.matrix(z)
