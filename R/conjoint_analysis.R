@@ -1,21 +1,30 @@
-
-library(dplyr)
-library(purrr)
-library(conjoint)
-head(experiment_data)
-str(experiment_data)
-conjoint_data<-experiment_data %>% select(duration:social_proof)
-code<-caEncodedDesign(conjoint_data)
-print(cor(code))
-new_data<-cbind(experiment_data,code)
-levels(factor(experiment_data$social_proof))
-caModel(new_data[,9],new_data[,10:15])
-lev<-c("12 months","3 months","6 months","give you the energy to unlock your fullest potential","help you lead a better life","help you sleep without more pills",
-       "improve your health for the long-run","improve your sleep sustainably","breaking bad habits and creating new routines",
-       "changing your sleep mindset","empowering you to take back your sleep habits",
-       "$20/month","$30/month","$40/month",
-       "a program created just for you","cognitive behavioral therapy","daily text messages from a coach","personalized, human coaching","the support of a community of people just like you","unique daily games, challenges and exercises",
-       "a method that has helped thousands","leading researchers","professional athletes","scientific evidence")
-lev_df<-data.frame(lev)
-levels(factor(experiment_data$social_proof))
-Conjoint(new_data[,9],new_data[,10:15],lev_df<-data.frame(lev))
+conjoint_analysis<-function(y,x,z,y.type="score")
+{
+  y<-m2v(y)
+  m<-length(x)
+  n<-nrow(x)
+  S<-nrow(y)/n
+  xnms<-names(x)
+  ynms<-names(y)
+  xtmp<-paste("factor(x$",xnms,sep="",paste(")"))
+  xfrm<-paste(xtmp,collapse="+")
+  yfrm<-paste("y$",ynms,sep="","~")
+  frml<-as.formula(paste(yfrm,xfrm))
+  Lj<-vector("numeric",m)
+  for(j in 1:m) {Lj[j]<-nlevels(factor(x[[xnms[j]]]))}
+  x<-as.data.frame(matexpand(m,n,S,x))
+  camodel<-lm(frml)
+  print(summary.lm(camodel))
+  u<-as.matrix(camodel$coeff)
+  intercept<-u[1]
+  ul<-utilities(u,Lj)
+  utlsplot(ul,Lj,z,m,xnms)
+  utls<-c(intercept,ul)
+  levnms<-c("intercept",as.matrix(z))
+  lu<-cbind(levnms,utls)
+  Utls<-as.data.frame(lu)
+  print("Part worths (utilities) of levels (model parameters for whole sample):")
+  print(Utls)
+  imp<-round(caImportance(y,x),2)
+}
+conjoint_analysis(new_data[,9],new_data[,10:15],lev_df)
