@@ -28,7 +28,7 @@ utlsplot<-function(ul,Lj,z,m,xnms)
     a<-abs(min(lb))+abs(min(lb))
     b<-abs(max(lb))+abs(max(lb))
     dev.new(width=5,height=5,pointsize=9)
-    barplot(lb,ylim=c(-a,b),ylab="utility",xlab=xnms[j],names.arg=ln)
+    barplot(lb,ylim=c(-a,b),ylab="utility",xlab=xnms[j],names.arg=ln,cex.axis=0.8, cex.names=0.8)
   }
   return(0)
 }
