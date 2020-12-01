@@ -37,4 +37,8 @@ conjoint_analysis<-function(y,x,z,y.type="score")
   print("Part worths (utilities) of levels (model parameters for whole sample):")
   print(Utls)
   imp<-round(caImportance(y,x),2)
+  print(paste("Sum of average importance: ", sum(imp)), quote=FALSE)
+  print("Chart of average factors importance")
+  dev.new(width=5,height=5,pointsize=9)
+  barplot(imp,ylim=c(0,100),ylab="Average importance",xlab="Factors",names.arg=names(x))
 }

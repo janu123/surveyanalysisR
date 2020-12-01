@@ -3,5 +3,6 @@
 export(conjoint_analysis)
 export(m2v)
 export(matexpand)
+export(plot_demo)
 export(utilities)
 export(utlsplot)
