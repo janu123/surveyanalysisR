@@ -17,20 +17,30 @@ knitr::opts_chunk$set(
 [![R build status](https://github.com/janu123/surveyanalysisR/workflows/R-CMD-check/badge.svg)](https://github.com/janu123/surveyanalysisR/actions)
 <!-- badges: end -->
 
-The goal of surveyanalysis is to ...
+The goal of surveyanalysis is to analyse the market research survey data 
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
-```{r cars}
-summary(cars)
+```{r }
+library(dplyr)
+library(surveyanalysisR)
+library(purrr)
+library(scales)
+survey_demo<- survey_data %>% select(response_id, d_urban:s_problem, d_marital:weights)
+variables_with_labels = map(survey_demo, function(x) attr(x, "class") == "haven_labelled") %>% names()
+factored_demo<-survey_demo %>%
+  mutate_at(all_of(variables_with_labels), as_factor)
+survey1<-factored_demo %>%
+  group_by(s_gender,s_age)%>%
+  summarise(count=n())
+ggplot(data=survey1, aes(x=s_age, fill=s_gender)) +scale_fill_brewer(palette="Set1",  na.value = "gray")+
+  geom_bar(data=filter(survey1, s_gender=="Female"), aes(y=count), stat="identity") + 
+  geom_bar(data=filter(survey1, s_gender=="Male"), aes(y=count*(-1)), stat="identity") +
+  scale_y_continuous(breaks=seq(-600, 600, 100), 
+                     labels=comma(abs(seq(-600, 600, 100)))) + 
+  labs(x="Age", y="count", title="Survey responses by Age Groups") +
+  coord_flip() +
+  theme_bw()
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!

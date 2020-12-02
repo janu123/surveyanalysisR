@@ -13,4 +13,7 @@ usethis::use_data(conjoint_data,overwrite = TRUE)
 survey_data<-read_sav("data-raw/survey_data.sav")
 usethis::use_data(survey_data,overwrite = TRUE)
 survey_demo<- survey_data %>% select(response_id, d_urban:s_problem, d_marital:weights)
-usethis::use_data(survey_demo,overwrite = TRUE)
+variables_with_labels = map(survey_demo, function(x) attr(x, "class") == "haven_labelled") %>% names()
+factored_demo<-survey_demo %>%
+  mutate_at(all_of(variables_with_labels), as_factor)
+usethis::use_data(factored_demo,overwrite = TRUE)
