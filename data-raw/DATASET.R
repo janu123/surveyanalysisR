@@ -30,7 +30,7 @@ survey_philosophy <-
 variables_with_labels = map(survey_philosophy, function(x) attr(x, "class") == "haven_labelled") %>% names()
 factored_philosophy<-survey_philosophy %>%
   mutate_at(all_of(variables_with_labels), as_factor)
-usethis::use_data(factored_philosophy)
+usethis::use_data(factored_philosophy,overwrite = TRUE)
 
 ## Awareness
 survey_awareness <-
@@ -39,7 +39,7 @@ survey_awareness <-
 variables_with_labels = map(survey_awareness, function(x) attr(x, "class") == "haven_labelled") %>% names()
 factored_awareness<-survey_awareness %>%
   mutate_at(all_of(variables_with_labels), as_factor)
-usethis::use_data(factored_awareness)
+usethis::use_data(factored_awareness,overwrite = TRUE)
 
 ## Source
 survey_source <-
@@ -48,7 +48,7 @@ survey_source <-
 variables_with_labels = map(survey_source, function(x) attr(x, "class") == "haven_labelled") %>% names()
 factored_source<-survey_source %>%
   mutate_at(all_of(variables_with_labels), as_factor)
-usethis::use_data(factored_source)
+usethis::use_data(factored_source,overwrite = TRUE)
 
 ## Behaviour
 survey_behavior <-
@@ -57,7 +57,7 @@ survey_behavior <-
 variables_with_labels = map(survey_behavior, function(x) attr(x, "class") == "haven_labelled") %>% names()
 factored_behavior<-survey_behavior %>%
   mutate_at(all_of(variables_with_labels), as_factor)
-usethis::use_data(factored_behavior)
+usethis::use_data(factored_behavior,overwrite = TRUE)
 
 ## Other_Behavior
 survey_behavior_other <-
@@ -66,4 +66,4 @@ survey_behavior_other <-
 variables_with_labels = map(survey_behavior_other, function(x) attr(x, "class") == "haven_labelled") %>% names()
 factored_behavior_other<-survey_behavior_other %>%
   mutate_at(all_of(variables_with_labels), as_factor)
-usethis::use_data(factored_behavior_other)
+usethis::use_data(factored_behavior_other,overwrite = TRUE)
