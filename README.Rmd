@@ -19,22 +19,21 @@ knitr::opts_chunk$set(
 
 The goal of surveyanalysisR package is to analyse the market research survey data 
 
-As an example lets see the survey responses by gender and age group
+The code shows the results of the ratings based conjoint analysis
 
 ```{r message=FALSE, warning=FALSE}
 library(surveyanalysisR)
-library(scales)
-survey1<-factored_demo %>%
-  group_by(s_gender,s_age)%>%
-  summarise(count=n())
-ggplot(data=survey1, aes(x=s_age, fill=s_gender)) +scale_fill_brewer(palette="Set1",  na.value = "gray")+
-  geom_bar(data=filter(survey1, s_gender=="Female"), aes(y=count), stat="identity") + 
-  geom_bar(data=filter(survey1, s_gender=="Male"), aes(y=count*(-1)), stat="identity") +
-  scale_y_continuous(breaks=seq(-600, 600, 100), 
-                     labels=comma(abs(seq(-600, 600, 100)))) + 
-  labs(x="Age", y="count", title="Survey responses by Age Groups") +
-  coord_flip() +
-  theme_bw()
+lev<-c("12 months","3 months","6 months","give you the energy to unlock your fullest potential","help you lead a better life","help you sleep without more pills",
+       "improve your health for the long-run","improve your sleep sustainably","breaking bad habits and creating new routines",
+       "changing your sleep mindset","empowering you to take back your sleep habits",
+       "$20/month","$30/month","$40/month",
+       "a program created just for you","cognitive behavioral therapy","daily text messages from a coach","personalized, human coaching","the support of a community of people just like you","unique daily games, challenges and exercises",
+       "a method that has helped thousands","leading researchers","professional athletes","scientific evidence")
+lev_df<-data.frame(lev)
+conjoint_analysis(conjoint_data[,7],conjoint_data[,1:6],lev_df)
 ```
 
+```{r,echo=FALSE}
+knitr::include_graphics("README_files/figure-markdown_github/factorsimportance.jpeg")
+```
 
