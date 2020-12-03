@@ -2,7 +2,7 @@
 title: "surveyanalysisR"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{my-vignette}
+  %\VignetteIndexEntry{surveyanalysisR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
