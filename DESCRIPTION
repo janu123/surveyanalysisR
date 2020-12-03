@@ -17,12 +17,14 @@ Depends: R (>= 3.1),
          purrr
 Imports: 
     dplyr,
-    haven,
-    ggplot2,
     conjoint,
+    ggplot2,
+    haven,
+    stringr,
     purrr
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr

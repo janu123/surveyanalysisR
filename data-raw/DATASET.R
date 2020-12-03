@@ -1,4 +1,4 @@
-## code to prepare `DATASET` dataset goes here
+## code to prepare  dataset goes here
 experiment_data<-read_sav("data-raw/experiment_data.sav")
 conjoint_data<-experiment_data %>% select(duration:answer)
 conjoint_data<-caEncodedDesign(conjoint_data)
