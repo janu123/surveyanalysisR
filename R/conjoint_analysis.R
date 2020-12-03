@@ -1,4 +1,4 @@
-#' Title
+#' Title Perfom Conjoint Analysis
 #'
 #' @param y
 #' @param x

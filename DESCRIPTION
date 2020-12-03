@@ -4,7 +4,7 @@ Title: Market Research Data Analysis
 Version: 0.1.0
 Author: Janani Selvaraj
 Maintainer: Janani Selvaraj <janani6490.selva@gmail.com>
-Description: This package analyses the market research survey data
+Description: This package analyses the market research survey data.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
@@ -17,12 +17,7 @@ Depends: R (>= 3.1),
          purrr,
          tidyr
 Imports: 
-    dplyr,
-    conjoint,
-    ggplot2,
-    haven,
-    stringr,
-    purrr
+    conjoint
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/conjoint_analysis.R
 \name{conjoint_analysis}
 \alias{conjoint_analysis}
-\title{Title}
+\title{Title Perfom Conjoint Analysis}
 \usage{
 conjoint_analysis(y, x, z, y.type = "score")
 }
@@ -13,5 +13,5 @@ conjoint_analysis(y, x, z, y.type = "score")
 
 }
 \description{
-Title
+Title Perfom Conjoint Analysis
 }
