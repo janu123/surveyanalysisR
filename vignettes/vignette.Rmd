@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 
+
 ```{r setup,message = FALSE,warning=FALSE}
 library(surveyanalysisR)
 lev<-c("12 months","3 months","6 months","give you the energy to unlock your fullest potential","help you lead a better life","help you sleep without more pills",
@@ -35,9 +36,23 @@ knitr::include_graphics("images/factorsimportance.jpeg")
 knitr::include_graphics("images/social proof.jpeg")
 ```
 
+```{r , fig,fig.height = 5, fig.width = 5, message=FALSE, warning=FALSE}
+library(surveyanalysisR)
+library(scales)
+survey<-factored_demo %>%
+  group_by(s_gender,s_age)%>%
+  summarise(count=n())
+ggplot(data=survey, aes(x=s_age, fill=s_gender)) +scale_fill_brewer(palette="Set1",  na.value = "gray")+
+  geom_bar(data=filter(survey, s_gender=="Female"), aes(y=count), stat="identity") + 
+  geom_bar(data=filter(survey, s_gender=="Male"), aes(y=count*(-1)), stat="identity") +
+  scale_y_continuous(breaks=seq(-600, 600, 100), 
+                     labels=comma(abs(seq(-600, 600, 100)))) + 
+  labs(x="Age", y="count", title="Survey responses by Age Groups") +
+  coord_flip() +
+  theme_bw()
+```
 
-
-```{r setup,fig1, fig.height = 3, fig.width = 3,message=FALSE,warning=FALSE}
+```{r setup,fig1, fig.height = 5, fig.width = 5,message=FALSE,warning=FALSE}
 plot_demo("d_urban")
 ```
 
